@@ -1,10 +1,9 @@
 services:
   - type: web
     name: wellnest-backend
-    env: java
-    rootDir: server
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/wellnest-server-0.0.1-SNAPSHOT.jar
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
     envVars:
       - key: MONGO_URI
         sync: false
