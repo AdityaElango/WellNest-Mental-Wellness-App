@@ -1,0 +1,18 @@
+Use these exact copy-paste commands:
+
+Start app (both backend + frontend)
+cd "D:\Users\adity\Downloads\Java\Wellnest"
+powershell -ExecutionPolicy Bypass -File ".\start-dev.ps1"
+
+Stop app (both backend + frontend)
+cd "D:\Users\adity\Downloads\Java\Wellnest"
+powershell -ExecutionPolicy Bypass -File ".\stop-dev.ps1"
+
+If you get BUILD FAILURE when running backend manually, use this exact command (includes proper DB name in URI):
+
+cd "D:\Users\adity\Downloads\Java\Wellnest\server"
+$env:MONGO_URI="mongodb+srv://Admin:Adi%402304@wellnest-mental-wellnes.a108yjf.mongodb.net/wellnest?appName=WellNest-Mental-Wellness-App"; $env:JWT_SECRET="wellnest-super-secret-key-32-chars-minimum"; $env:PORT="8080"; $env:CORS_ALLOWED_ORIGIN="http://localhost:5173"; ..\.tools\apache-maven-3.9.14\bin\mvn.cmd spring-boot:run
+
+And frontend manually:
+cd "D:\Users\adity\Downloads\Java\Wellnest\client"
+$env:VITE_API_URL="http://localhost:8080"; npm run dev -- --host 0.0.0.0 --port 5173
