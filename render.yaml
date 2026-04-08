@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: wellnest-backend
+    env: java
+    rootDir: server
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/wellnest-server-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: CORS_ALLOWED_ORIGIN_PATTERNS
+        sync: false
